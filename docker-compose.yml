@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+
+  api:
+    container_name: api_insurance
+    build:
+      context: .    # весь текущий каталог отправить в образ докер
+      dockerfile: app/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8001:8001"
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
+    restart: always
+    networks:
+      - insurancenet
+
+  postgres:
+    container_name: postgres_insurance
+    image: postgres:15.2
+    env_file:
+      - .env
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      PG_DATA: /var/lib/postgresgl/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # имя_тома:/папка/в/контейнере
+    restart: always
+    networks:
+      - insurancenet
+
+volumes:
+  pgdata:
+
+networks:
+  insurancenet:
+    name: insurancenet
