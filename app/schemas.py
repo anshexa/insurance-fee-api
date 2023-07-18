@@ -27,3 +27,7 @@ class CargoSchema(BaseModel):
 
 class CreateInsuranceFeeResponseSchema(InsuranceFeeSchema):
     cargo: CargoSchema
+
+
+class CostSchema(BaseModel):
+    cost: float
