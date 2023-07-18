@@ -3,6 +3,8 @@ from tortoise.contrib.fastapi import register_tortoise
 
 import os
 
+from app.controller import insurance_fee_controller
+
 
 def start() -> FastAPI:
     app = FastAPI(title='API для расчета стоимости страхования')
@@ -21,9 +23,14 @@ def start() -> FastAPI:
         generate_schemas=True,
         add_exception_handlers=True,
     )
+    register_controller(app=app)
 
     return app
 
 
-def get_db_uri(user, password, host, port, db):
+def get_db_uri(user, password, host, port, db) -> str:
     return f"postgres://{user}:{password}@{host}:{port}/{db}"
+
+
+def register_controller(app: FastAPI) -> None:
+    app.include_router(insurance_fee_controller)
