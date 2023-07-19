@@ -13,6 +13,9 @@
 * Docker-compose
 * Python 3.11
 
+В разработке использованы паттерны MVC и Service / Repository
+
+### Скриншоты
 ![api_swagger](https://user-images.githubusercontent.com/109981473/254390640-4d1ea2dd-e68f-4881-8abb-87beb1a14aaf.png)
 ![api_swagger_post](https://user-images.githubusercontent.com/109981473/254391761-e8916b95-ab37-47df-83cb-a293cb5eeaeb.png)
 ![api_swagger_get](https://user-images.githubusercontent.com/109981473/254391971-6a35ffc6-3bb9-4037-9d94-05535563342b.png)
